@@ -1,0 +1,40 @@
+//Time Complexity = O(n)
+// Space Complexity = O(n)
+
+
+class MinStack {
+public:
+    vector<int>s;
+    MinStack() {
+        
+    }
+    
+    void push(int val) {
+        s.push_back(val);
+        
+    }
+    
+    void pop() {
+        if(s.size()== 0) return; 
+        s.pop_back();
+        
+        
+    }
+    
+    int top() {
+        if(s.size()==  0){
+            return -1;
+        }
+        else{
+            return s.back();
+        }
+        
+    }
+    
+    int getMin() {
+        if(s.size()==0) return -1;
+        return *min_element(s.begin(),s.end());
+        
+        
+    }
+};
