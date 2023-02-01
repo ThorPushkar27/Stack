@@ -1,0 +1,47 @@
+// Time Complexity O(1).
+
+class CustomStack {
+public:
+    int top;
+    int siz;
+    int *arr;
+    CustomStack(int maxSize) {
+        siz= maxSize;
+        top= -1;
+        arr= new int[siz];
+    }
+    
+    void push(int x) {
+        if(siz - top >1){
+            top++;
+            arr[top]=x;
+        }
+        
+    }
+    
+    int pop() {
+        if(top == -1){
+            return -1;
+        }
+        else{
+            int val1 = arr[top];
+            top--;
+            return val1;
+        }
+    }
+    
+    void increment(int k, int val) {
+        if(k>top){
+            for(int i =0; i<=top; i++){
+                arr[i]=arr[i]+val;
+
+            }
+        }
+        else{
+            for(int i =0; i<k;i++){
+                arr[i]=arr[i]+val;
+            }
+        }
+        
+    }
+};
