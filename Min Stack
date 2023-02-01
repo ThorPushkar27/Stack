@@ -38,3 +38,49 @@ public:
         
     }
 };
+
+
+
+// Time Complexity = O(1)
+//Space Comeplexity = O(n)
+
+
+
+class MinStack {
+public:
+    vector<pair<int,int>>s;
+    
+    MinStack() {
+        
+    }
+    
+    void push(int val) {
+        if(s.size()==0) s.push_back({val,val});
+        else s.push_back({val, min(s.back().second,val)});
+        
+    }
+    
+    void pop() {
+        if(s.size()== 0) return; 
+        s.pop_back();
+        
+        
+    }
+    
+    int top() {
+        if(s.size()==  0){
+            return -1;
+        }
+        
+        return s.back().first;
+        
+        
+    }
+    
+    int getMin() {
+        if(s.size()==0) return -1;
+        return s.back().second;
+        
+        
+    }
+};
