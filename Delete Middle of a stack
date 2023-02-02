@@ -1,0 +1,31 @@
+// Recurrsive call;
+// Solved using recurssion.
+//Copy Me acche se notes hain.
+
+
+
+#include <bits/stdc++.h> 
+using namespace std;
+void solve(stack<int>&inputStack, int size, int count){
+   //Base Case
+   if(count == size/2){
+      inputStack.pop();
+      return;
+   }
+   int num = inputStack.top();
+   inputStack.pop();
+
+   //Recursive Call
+   solve(inputStack,size,count+1);
+   inputStack.push(num);
+}
+
+
+void deleteMiddle(stack<int>&inputStack, int N){
+   
+   int count=0;
+   solve(inputStack,N,count);
+	
+   // Write your code here
+   
+}
