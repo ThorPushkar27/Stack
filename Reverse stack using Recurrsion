@@ -1,0 +1,35 @@
+// First time pura function khud se likha.
+// Ho raha h questions.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void update(stack<int>&stack, int x){
+    //Base Case
+    if(stack.empty()==true){
+        stack.push(x);
+        return;
+    }
+    int n = stack.top();
+    stack.pop();
+
+    update(stack,x);
+    stack.push(n);
+}
+
+void insertatBottom(stack<int>&stack, int x){
+    update(stack, x);
+    
+}
+
+void reverseStack(stack<int> &stack) {
+    // Base Case
+    if(stack.empty()== true){
+        return;
+    }
+    int num = stack.top();
+    stack.pop();
+    // Recursive Call
+    reverseStack(stack);
+    insertatBottom(stack, num);
+}
