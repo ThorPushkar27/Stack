@@ -1,0 +1,58 @@
+//Time Complexity =O(n)
+// Space Complexity = O(n).
+// Learnt character campairsion me single quote use karte hain instead of double quote.
+// " " not this
+// But ' ' this
+// Very Important Question asked in many interview of different companies.
+
+
+
+
+class Solution {
+public:
+    // bool matches(char s, char t){
+    //     if((s =="(" && t ==")" )||(s =="{" && t =="}") || (s =="[" && t =="]")  ){
+    //         return true;
+    //     }
+    //     else{
+    //         return false;
+    //     }
+    // }
+    
+    
+    bool isValid(string s) {
+        stack<char>st;
+        int n = s.length();
+        for(int i =0; i<n; i++){
+            char ch = s[i];
+            if((ch == '(' )|| (ch == '{') || (ch == '[')){
+                st.push(ch);
+            }
+            else{
+                if(st.empty()== false){
+                    char top = st.top();
+                    if ((ch == ')' && top == '(' )||(ch == '}' && top == '{') || (ch == ']' && top == '[')){
+                        st.pop();
+                    }
+                    else{
+                        return false;
+                    }
+
+                }
+                else{
+                    return false;
+                }
+                
+
+            }
+
+        }
+        if(st.empty()==true){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+};
