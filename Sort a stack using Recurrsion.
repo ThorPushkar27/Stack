@@ -1,0 +1,32 @@
+//Simple question
+//Time Complexity = O(n2)
+//Space Complexity -> donot know because till now i have not read recurrsion.
+
+
+#include <bits/stdc++.h>
+using namespace std; 
+void insertsorted(stack<int> &stack, int x){
+	//Base Case
+	if(stack.empty()==true || (stack.empty()==false && stack.top()<x)){
+		stack.push(x);
+		return;
+	}
+	int n = stack.top();
+	stack.pop();
+
+	//Recurrsive Call
+	insertsorted(stack,x),
+	stack.push(n);
+}
+void sortStack(stack<int> &stack)
+{
+	//Base Case
+	if(stack.empty()== true ){
+		return;
+	}
+	int num = stack.top();
+	stack.pop();
+
+	sortStack(stack);
+	insertsorted(stack,num);
+}
