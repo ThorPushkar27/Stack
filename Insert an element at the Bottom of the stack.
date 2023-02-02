@@ -1,0 +1,29 @@
+// Recursively solved.
+//Similar to delete the middle element of a stack
+// Learnt ke function kaise banate hain
+// Focus that the function you created is of the void type not of stack<int> typw.
+// Easy question maza aaya karne me.
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+void update(stack<int>& myStack, int x){
+    //BaseCase()
+    if(myStack.empty()== true){
+        myStack.push(x);
+        return;
+    }
+    int num = myStack.top();
+    myStack.pop();
+
+    update(myStack,x);
+    myStack.push(num);
+}
+
+stack<int> pushAtBottom(stack<int>& myStack, int x) 
+{
+    // Write your code here.
+    update(myStack,x);
+    return myStack;
+}
