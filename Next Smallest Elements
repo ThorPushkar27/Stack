@@ -1,0 +1,22 @@
+// Do loop laga ke O(n2) me solve kar sakte hain isko.
+
+// O(n) me solve karne ke liye we can use stack.
+
+#include<stack>
+#include<algorithm>
+vector<int> nextSmallerElement(vector<int> &arr, int n)
+{
+    vector<int>ans(n);
+    stack<int>st;
+    st.push(-1);
+    for(int i=n-1; i>=0; i--){
+        int curr=arr[i];
+        while(st.top()>= curr){
+            st.pop();
+        }
+        ans[i]=(st.top());
+        st.push(curr);
+    }
+    
+    return ans;
+}
