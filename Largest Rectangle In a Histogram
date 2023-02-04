@@ -1,0 +1,65 @@
+// Time Complexity = O(n2)
+//Space Complexity = O(n)
+
+// Its a difficult question.
+// Find next smaller element and previous smaller element to find the actual width of the rectangle
+// Height is already known and is equal to arr[i]
+
+class Solution {
+public:
+    vector<int>nextSmallerElement(vector<int>heights, int n){
+        stack<int>st;
+        
+        st.push(-1);
+        vector<int>ans1(n);
+        for(int i=n-1; i>=0;i--){
+            int curr= heights[i];
+            while(st.top()!= -1 && heights[st.top()]>=curr){
+                st.pop();
+            }
+            ans1[i]=st.top();
+            st.push(i);
+        }
+        return ans1;
+
+    }
+    vector<int>prevSmallerElement(vector<int>heights, int n){
+        stack<int>st;
+        
+        st.push(-1);
+        vector<int>ans2(n);
+        for(int i=0; i<n;i++){
+            int curr= heights[i];
+            while(st.top()!= -1 && heights[st.top()]>=curr){
+                st.pop();
+            }
+            ans2[i]=st.top();
+            st.push(i);
+        }
+        return ans2;
+        
+    }
+    int largestRectangleArea(vector<int>& heights) {
+        int n = heights.size();
+        vector<int> next(n);
+        next = nextSmallerElement(heights,n);
+
+        vector<int>prev(n);
+        prev = prevSmallerElement(heights,n);
+        int area= INT_MIN;
+        for(int i=0; i<n;i++){
+            int l= heights[i];
+            
+            if(next[i]==-1){
+                next[i]=n;
+            }
+            int b = next[i]-prev[i]-1;
+            int newArea = l*b;
+            area = max(newArea,area);
+
+
+        }
+        return area;
+        
+    }
+};
