@@ -1,0 +1,41 @@
+Time Complexity = O(n*m)
+Space Complexity= o(n)
+
+ vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        stack<int>st;
+        int n = nums1.size();
+        int m = nums2.size();
+        vector<int>ans;
+        
+        for(int i =0; i<n; i++){
+            st.push(nums1[i]);
+        }
+        
+        while(st.empty()==false){
+            int temp;
+            int found=0;
+            int num=st.top();st.pop();
+            for(int i =0; i<m; i++){
+                if(nums2[i]==num){
+                    temp=i;
+                }
+            }
+            
+            for(int i = temp; i<m; i++){
+                if(nums2[i]>num){
+                    found=1;
+                    ans.push_back(nums2[i]);
+                    break;
+                }
+            }
+            if(found==0){
+                ans.push_back(-1);
+            }
+            
+            
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+        
+    }
+};
