@@ -1,0 +1,58 @@
+//Time Complexity=O(n)
+//Space Complexity = O(n)
+
+
+class Solution {
+public:
+    bool backspaceCompare(string s, string t) {
+        string s1="";
+        string s2="";
+        stack<char>st1;
+        stack<char>st2;
+        
+        for(int i =0; i<s.length();i++){
+            if(s[i]=='#'&& st1.empty()==true){
+                st1.push(s[i]);
+            }
+            else if(s[i]=='#'){
+                st1.pop();
+            }
+            else{
+                st1.push(s[i]);
+            }
+                
+                
+
+        }
+        for(int i =0; i<t.length();i++){
+            if(t[i]=='#'&& st2.empty()==true){
+                st2.push(t[i]);
+            }
+            else if(t[i]=='#'){
+                st2.pop();
+            }
+            else{
+                st2.push(t[i]);
+            }
+        }
+        
+        while(st1.empty()==false && st1.top()!='#'){
+            char ch=st1.top();
+            s1.push_back(ch);
+            st1.pop();
+        }
+        while(st2.empty()==false && st2.top()!='#' ){
+            char ch =st2.top();
+            s2.push_back(ch);
+            st2.pop();
+        }
+        if(s1==s2){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+        
+    }
+};
