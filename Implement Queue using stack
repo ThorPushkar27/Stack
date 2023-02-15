@@ -1,0 +1,63 @@
+//Time Complexity = O(n)
+
+class MyQueue {
+public:
+    stack<int> st1;
+    stack<int> st2;
+    MyQueue() {
+        
+    }
+    
+    void push(int x) {
+        st1.push(x);
+        
+    }
+    
+    int pop() {
+        if(st1.empty()==true){
+            return -1;
+        }
+        else{
+            while(st1.size()>1){
+                int a = st1.top();
+                st1.pop();
+                st2.push(a);
+            }
+            int b = st1.top();
+            st1.pop();
+            while(st2.empty()==false){
+                st1.push(st2.top());
+                st2.pop();
+            }
+            return b;
+
+        }
+        
+    }
+    
+    int peek() {
+        while(st1.size()>1){
+            int a = st1.top();
+            st1.pop();
+            st2.push(a);
+
+        }
+        int b = st1.top();
+
+        while(st2.empty()==false){
+            st1.push(st2.top());
+            st2.pop();
+        }
+        return b;
+
+        
+    }
+    
+    bool empty() {
+        if(st1.empty()==true){
+            return true;
+        }
+        return false;
+        
+    }
+};
