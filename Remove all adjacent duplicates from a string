@@ -1,0 +1,30 @@
+// TC = O(n)
+
+
+
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        // I will solve it using using recurrsion .
+        // It can also be solved using stack
+
+        stack<char>st;
+        string ans;
+        
+        int n = s.size();
+        for(int i =0; i<n; i++){
+            if(st.empty()==false && s[i]==st.top()  ){
+                st.pop();
+            }
+            else{
+                st.push(s[i]);
+            }
+        }
+        while(st.empty()==false){
+            ans.push_back(st.top());
+            st.pop();
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};
